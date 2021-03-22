@@ -1,2 +1,2 @@
-for el in list(reversed(list(map(int,input().split())))):
-    print(el, end=' ')
+li = [str(el) for el in list(reversed(list(map(int,input().split()))))]
+print(' '.join(li))
