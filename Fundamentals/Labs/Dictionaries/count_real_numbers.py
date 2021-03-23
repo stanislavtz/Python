@@ -1,12 +1,12 @@
 nums = list(map(float, input().split()))
-result = {}
+unsorted_nums = {}
 
 for num in nums:
-    if num not in result.keys():
-        result[num] = 0
-    result[num] += 1
+    if num not in unsorted_nums.keys():
+        unsorted_nums[num] = 0
+    unsorted_nums[num] += 1
 
-sorted_result = (sorted(result.items(), key= lambda x: x[0], reverse=False))
+sorted_nums = sorted(unsorted_nums.items(), key= lambda x: x[0], reverse=False)
 
-for k, v in sorted_result:
+for k, v in sorted_nums:
     print(f'{k} -> {v} times')        
