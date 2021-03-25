@@ -1,7 +1,7 @@
 def fill_collection(data):
     col = {}
     for d in map(lambda x: x.lower(), data):
-        if not d in col.keys():
+        if not d in col:
             col[d] = 0
         col[d] += 1
     

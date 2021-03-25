@@ -13,7 +13,7 @@ while data != 'end':
     username = data.split(' -> ')[0]
     password = data.split(' -> ')[1]
     
-    if not username in db.keys() or db[username] != password:
+    if not username in db or db[username] != password:
         print(F"{username}: login failed")
         counter += 1
         data = input()

@@ -2,7 +2,8 @@ phone_book = {}
 
 entry = input()
 while entry != 'Over':
-    li = list(map(lambda x: x.strip(), entry.split(':')))
+    li = entry.split(' : ')
+    
     if li[0].isdigit():
         phone_book[li[1]] = li[0]
     else:

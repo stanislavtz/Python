@@ -2,7 +2,7 @@ string = input()
 d = {}
 
 for s in string:
-    if not s in d.keys():
+    if not s in d:
         d[s] = 0
     d[s] += 1
 

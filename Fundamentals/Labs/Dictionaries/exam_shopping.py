@@ -7,14 +7,14 @@ while data != 'exam time':
 
     if command == 'stock':
         qtty = int(data.split()[2])
-        if not product in store.keys():
+        if not product in store:
             store[product] = 0
         store[product] += qtty
 
     elif command == 'buy':
         qtty = int(data.split()[2])
 
-        if not product in store.keys():
+        if not product in store:
             print(f"{product} doesn't exist")
             data = input()
             continue
@@ -34,4 +34,3 @@ while data != 'exam time':
 for k,v in store.items():
     if v > 0:
         print(f"{k} -> {v}")
-        

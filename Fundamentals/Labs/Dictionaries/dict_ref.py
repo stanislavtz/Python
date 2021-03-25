@@ -1,12 +1,13 @@
 inp = input()
 res = {}
 while inp != 'end':
-    li = inp.split(' = ')
+    a = inp.split(' = ')[0]
+    b = inp.split(' = ')[1]
 
-    if li[1] in res.keys():
-        res[li[0]] = res[li[1]]
-    elif li[1].isdigit():
-        res[li[0]] = int(li[1])
+    if b in res:
+        res[a] = res[b]
+    elif b.isdigit():
+        res[a] = int(b)
     
     inp = input()
 
