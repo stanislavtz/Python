@@ -17,5 +17,4 @@ while data != 'Aggregate':
 
 for k, v in regions.items():
     avrg =  sum(v) - (sum(v) / len(v))
-
     print(f"{k} -> {', '.join(map(lambda x: str(x), v))} ({math.ceil(avrg)})")

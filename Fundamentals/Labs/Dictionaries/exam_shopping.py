@@ -30,6 +30,7 @@ while data != 'exam time':
             store[product] -= qtty
 
     data = input()
+    
 
 for k,v in store.items():
     if v > 0:

@@ -26,6 +26,7 @@ elif criteria == 'Salary':
     result_db = salaries_db.copy()
 else:
     result_db = positions_db.copy()
+    
 
 for k, v in result_db.items():
     print(f"{'Name'}: {k}\n{criteria}: {v}\n{'='*20}")
