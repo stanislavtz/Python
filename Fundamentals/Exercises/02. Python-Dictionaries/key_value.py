@@ -4,18 +4,17 @@ result = {}
 
 for i in range(n):
     data = input()
-    k = data.split(' => ')[0]
+    key_data = data.split(' => ')[0]
     values = data.split(' => ')[1].split(';')
 
-    isKey = key in k
-    isValue = value in data.split(' => ')[1]
-
+    isKey = key in key_data
     if isKey == True:
-        if not k in result:
-            result[k] = []
+        if not key_data in result:
+            result[key_data] = []
 
+        isValue = value in data.split(' => ')[1]
         if isValue == True:
-            result[k] += list(filter(lambda v: value in v, values))
+            result[key_data] += list(filter(lambda v: value in v, values))
 
 for k, v in result.items():
     print(f"{k}:")
