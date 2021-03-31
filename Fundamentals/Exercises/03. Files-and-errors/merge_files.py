@@ -7,4 +7,4 @@ with open('./merge_files/first.txt', 'r') as first_f:
         merged = f_list + s_list
         
         with open('./merge_files/output.txt', 'w') as output_f:
-            output_f.writelines(f_list + s_list)
+            output_f.writelines(merged)
