@@ -1,6 +1,6 @@
 {"username": "stan", "password": "111", "logged_in": false}
 {"username": "aha", "password": "222", "logged_in": false}
 {"username": "stanislav", "password": "111", "logged_in": true}
-{"username": "dfgt", "password": "222", "logged_in": false}
-{"username": "Simo", "password": "123", "logged_in": true}
+{"username": "Simo", "password": "123", "logged_in": false}
 {"username": "pesho", "password": "pesho", "logged_in": true}
+{"username": "Merry", "password": "123456", "logged_in": false}
