@@ -25,7 +25,5 @@ with open(path, 'r') as html_file:
 
         data = input()
 
-    print(''.join(lines))
-
     with open(path, 'w') as new_html:
         [new_html.write(line) for line in lines]

@@ -1,0 +1,51 @@
+function host(endPoint) {
+    return `https://api.backendless.com/${endPoint}`
+}
+
+const APP_ID = '073AB9AC-15B2-8B1B-FF3A-8D533EA5FC00';
+const API_KEY = '2B046888-F2E9-49D9-BE2D-614F883B76A4';
+const url = host(`${APP_ID}/${API_KEY}/data/Person/E0632855-AF26-47EF-B166-AB0CFE264879`);
+
+var user = new Backendless.User();
+user.email = "james.bond@mi6.co.uk";
+user.password = "supe3rs3cre3t";
+
+// function userRegistered( user )
+// {
+//   console.log( "user has been registered" );
+// }
+
+// function gotError( err ) 
+// {
+//   console.log( "error message - " + err.message );
+//   console.log( "error code - " + err.statusCode );
+// }
+
+// Backendless.UserService.register( user )
+//   .then( userRegistered )
+//   .catch( gotError );
+
+
+Backendless.initApp( APP_ID, API_KEY );
+
+function userLoggedIn( user )
+{
+  console.log( "user has logged in" );
+  // any other API call at this point
+  // or later in the app will be executed
+  // on behalf of the logged in user
+}
+
+function gotError( err ) // see more on error handling
+{
+  console.log( "error message - " + err.message );
+  console.log( "error code - " + err.statusCode );
+}
+
+var login = "james.bond@mi6.co.uk";
+var password = "supe3rs3cre3t";
+
+Backendless.UserService.login( login, password )
+ .then( userLoggedIn )
+ .catch( gotError );
+

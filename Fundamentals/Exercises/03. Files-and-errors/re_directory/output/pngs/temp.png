@@ -1,0 +1,28 @@
+class Person {
+    constructor(fName, lName, age, email) {
+        this.firstName = fName;
+        this.lastName = lName;
+        this.age = age;
+        this.email = email;
+    }
+    toString() {
+        return `${this.firstName? this.name:''} ${this.lastName?this.lastName:''} - (age: ${this.age?this.age:''}, email: ${this.email?this.email:''})}`;
+    }
+}
+
+let result = []
+
+let people = {
+    1: new Person('Anna', 'Simpson', 22, 'anna@yahoo.com'),
+    2: new Person('SoftUni'),
+    3: new Person('Stephan', 'Johnson', 22),
+    4: new Person('Gablriel', 'Peterson', 24, 'gabrs@yahoo.com')
+}
+
+for (let i = 0; i < 4; i++) {
+    result.push(`${people[i]}`)
+}
+
+for (const key in people) {
+    console.log(people[key].toString())
+}
