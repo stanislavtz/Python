@@ -1,5 +1,5 @@
 import os
-path = './file_extentions/input'
+path = './input'
 
 inp = input()
 
