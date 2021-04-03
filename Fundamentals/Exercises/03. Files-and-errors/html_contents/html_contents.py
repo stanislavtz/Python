@@ -10,7 +10,7 @@ def insert_tag(collection, tag_name, tag_line):
             break
 
 
-path = './html_contents/index.html'
+path = './index.html'
 
 with open(path, 'r') as html_file:
     lines = html_file.readlines()
