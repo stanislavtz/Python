@@ -12,7 +12,7 @@ while string != 'end':
 
     border = string[:border_lenght]
     core = string[border_lenght:-border_lenght]
-    if border:
+    if border and core:
         print(f"{core}{border}{core}")
     
     string = input()
