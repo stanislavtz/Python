@@ -1,46 +1,26 @@
-# n = int(input())
-# collection = []
-# result = []
-
-# for i in range(n):
-#     collection.append(input())
-
-# searched_letter = None
-# for i in range(n):
-#     for letter in collection[i]:
-#         if collection[i].count(letter) >= 2*(i+1) - 1:
-#             searched_letter = letter
-#     result.append(searched_letter)   
-
-# print(result)
-
+collection = []
 n = int(input())
-text = ''
 
 for i in range(n):
-    text += input() + ' '
+    collection.append(input())
 
-text = text.strip()
-letter_occurs = 0
 searched_letter = ''
+letters_counter = {}
+counter = 0
+for line in collection:
+    for letter in line:
+        if not letter in letters_counter:
+            letters_counter[letter] = 0
+        letters_counter[letter] += 1
 
-for letter in text:
-    counter = text.count(letter)
-    if counter > letter_occurs:
-        letter_occurs = counter
-        searched_letter = letter
+searched_letter = sorted(letters_counter, key=lambda x: letters_counter[x], reverse=True)[0]
 
-text_list = text.split(' ')
-searched_text = []
+result_lines_counter = 1
+for i in range(n-1):
+    current_occur = collection[i].count(searched_letter)
+    next_occur = collection[i+1].count(searched_letter)
+    if searched_letter in collection[i] and searched_letter in collection[i+1] and current_occur <= next_occur - 2:
+        collection[i+1] = searched_letter * (current_occur + 2)
+        result_lines_counter += 1
 
-for string in text_list:
-    if searched_letter in string:
-        num_occurs = string.count(searched_letter)
-        searched_text.append(num_occurs * searched_letter)
-
-searched_text.sort()
-i = 1
-for item in searched_text:
-    if item.count(searched_letter) >= i:
-        print(searched_letter * i)
-        i += 2
+[print(searched_letter * (2*i - 1)) for i in range(1, result_lines_counter+1)]
