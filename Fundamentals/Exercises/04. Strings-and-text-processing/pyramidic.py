@@ -5,15 +5,15 @@ for i in range(n):
     collection.append(input())
 
 searched_letter = ''
-letters_counter = {}
+letters_dict = {}
 counter = 0
 for line in collection:
     for letter in line:
-        if not letter in letters_counter:
-            letters_counter[letter] = 0
-        letters_counter[letter] += 1
+        if not letter in letters_dict:
+            letters_dict[letter] = 0
+        letters_dict[letter] += 1
 
-searched_letter = sorted(letters_counter, key=lambda x: letters_counter[x], reverse=True)[0]
+searched_letter = sorted(letters_dict, key=lambda x: letters_dict[x], reverse=True)[0]
 
 result_lines_counter = 1
 for i in range(n-1):
