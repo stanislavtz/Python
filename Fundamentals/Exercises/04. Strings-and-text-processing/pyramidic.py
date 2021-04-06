@@ -15,12 +15,14 @@ for line in collection:
 
 searched_letter = sorted(letters_dict, key=lambda x: letters_dict[x], reverse=True)[0]
 
-result_lines_counter = 1
-for i in range(n-1):
-    current_occur = collection[i].count(searched_letter)
-    next_occur = collection[i+1].count(searched_letter)
-    if searched_letter in collection[i] and searched_letter in collection[i+1] and current_occur <= next_occur - 2:
-        collection[i+1] = searched_letter * (current_occur + 2)
-        result_lines_counter += 1
+sequence = searched_letter
 
-[print(searched_letter * (2*i - 1)) for i in range(1, result_lines_counter+1)]
+result = [sequence]
+
+for i in range(1, n):
+    current_occur = collection[i].count(searched_letter)
+    if current_occur >= len(sequence) + 2:
+        sequence = (len(sequence) + 2) * searched_letter
+        result.append(sequence)
+
+[print(seq) for seq in result]
