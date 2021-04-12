@@ -1,42 +1,51 @@
-class Animal:
+from abc import ABC, abstractmethod
+
+
+class Animal(ABC):
     def __init__(self, name, age):
         self.name = name
         self.age = age
 
+    @abstractmethod
     def produce_sound(self):
-        return self.sound
+        pass
 
-    sound = None
+    @abstractmethod
+    def __str__(self):
+        pass
 
 
 class Dog(Animal):
-    sound = "I'm a Distinguishedog, and I will now produce a distinguished sound! Bau Bau."
-
     def __init__(self, name, age, legs):
         Animal.__init__(self, name, age)
         self.legs = legs
+
+    def produce_sound(self):
+        return "I'm a Distinguishedog, and I will now produce a distinguished sound! Bau Bau."
 
     def __str__(self):
         return f"Dog: {self.name}, Age: {self.age}, Number Of Legs: {self.legs}"
 
 
 class Cat(Animal):
-    sound = "I'm an Aristocat, and I will now produce an aristocratic sound! Myau Myau."
-
     def __init__(self, name, age, intellegance):
         Animal.__init__(self, name, age)
         self.intellegance = intellegance
+
+    def produce_sound(self):
+        return "I'm an Aristocat, and I will now produce an aristocratic sound! Myau Myau."
 
     def __str__(self):
         return f"Cat: {self.name}, Age: {self.age}, IQ: {self.intellegance}"
 
 
 class Snake(Animal):
-    sound = "I'm a Sophistisnake, and I will now produce a sophisticated sound! Honey, I'm home."
-
     def __init__(self, name, age, cruelty):
         Animal.__init__(self, name, age)
         self.cruelty = cruelty
+
+    def produce_sound(self):
+        return "I'm a Sophistisnake, and I will now produce a sophisticated sound! Honey, I'm home."
 
     def __str__(self):
         return f"Snake: {self.name}, Age: {self.age}, Cruelty: {self.cruelty}"
@@ -51,36 +60,28 @@ def create_animal(kind, name, age, prop):
         return Snake(name, age, prop)
 
 
-animals = {
-    "Dog": [],
-    "Cat": [],
-    "Snake": []
-}
+animals = []
 
 command = input()
 while command != "I'm your Huckleberry":
     if command.split()[0] != 'talk':
-        kind = command.split()[0]
-        name = command.split()[1]
-        age = command.split()[2]
-        prop = command.split()[3]
-
+        kind, name, age, prop = command.split()
         animal = create_animal(kind, name, age, prop)
-        animals[kind].append(animal)
+
+        animals.append(animal)
     else:
         name = command.split()[1]
-        animals_list = []
-
-        for v in animals.values():
-            animals_list.extend(v)
-
-        searched_results = list(filter(lambda x: x.name == name, animals_list))
+        searched_results = list(filter(lambda x: x.name == name, animals))
         animal = searched_results[0]
-        
+
         print(animal.produce_sound())
 
     command = input()
 
-for animal_list in animals.values():
-    for animal in animal_list:
-        print(animal)
+dogs = list(filter(lambda a: isinstance(a, Dog), animals))
+cats = list(filter(lambda a: isinstance(a, Cat), animals))
+snakes = list(filter(lambda a: isinstance(a, Snake), animals))
+
+sorted_animals = dogs + cats + snakes
+
+[print(animal) for animal in sorted_animals]
