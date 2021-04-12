@@ -54,7 +54,7 @@ while data != 'end':
     
     data = input()
 
-sorted_accounts = sorted(accounts, key=lambda x: (-x.get_balance(), x.get_bank()))
+sorted_accounts = sorted(accounts, key=lambda x: (-x.get_balance(), len(x.get_bank())))
 
 
 for account in sorted_accounts:
