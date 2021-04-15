@@ -126,5 +126,5 @@ try:
 
     print(student,'\n')
     print(worker)
-except Exception as err:
-    print(err)
+except Exception as ex:
+    print(ex)
