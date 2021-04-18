@@ -17,7 +17,7 @@ class Team:
 
 
 def creat_team(team_name, teams_list):
-    if not team_name in list(map(lambda t: t == t.name, teams_list)):
+    if not team_name in list(map(lambda t: t.name, teams_list)):
         team = Team(team_name)
         teams_list.append(team)
         return team
@@ -30,7 +30,7 @@ data = input()
 teams_list = []
 while data != 'final':
     data = data.upper()
-    teams_pattern = r'code\w+code'
+    teams_pattern = r'(?<=KZL)\w+(?=KZL)'
     teams = re.findall(teams_pattern, data)
     correct_named_teams = list(map(lambda t: t.upper()[::-1], teams))
 
@@ -57,5 +57,8 @@ while data != 'final':
 sorted_teams = sorted(teams_list, key=lambda t: t.points, reverse=True)
 top_3 = sorted_teams[:3]
 
+print('League standings:')
 [print(f"{index+1}. {team}") for index, team in enumerate(sorted_teams)]
-[print(f"- {team.name} -> {team.goals}") for team in top_3]
+
+print('Top 3 scored goals:')
+[print(f"- {team.name} -> {team.goals}") for team in sorted(top_3, key=lambda t: t.goals, reverse=True)]
