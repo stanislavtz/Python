@@ -26,12 +26,16 @@ def creat_team(team_name, teams_list):
     
 
 code = input()
+if '?' in code:
+    code = code.replace('?', '\\?')
+
 data = input()
 teams_list = []
 while data != 'final':
-    data = data.upper()
-    teams_pattern = r'(?<=KZL)\w+(?=KZL)'
-    teams = re.findall(teams_pattern, data)
+    teams_pattern = r'(?<={code})[A-Za-z]*(?={code})'
+    pattern = teams_pattern.format(code = code)
+
+    teams = re.findall(pattern, data)
     correct_named_teams = list(map(lambda t: t.upper()[::-1], teams))
 
     team_1 = creat_team(correct_named_teams[0], teams_list)
@@ -54,11 +58,11 @@ while data != 'final':
     
     data = input()
 
-sorted_teams = sorted(teams_list, key=lambda t: t.points, reverse=True)
-top_3 = sorted_teams[:3]
+sorted_teams = sorted(teams_list, key=lambda t: (-t.points, t.name))
+top_3 = sorted(teams_list, key=lambda t: (-t.goals, t.name))[:3]
 
 print('League standings:')
 [print(f"{index+1}. {team}") for index, team in enumerate(sorted_teams)]
 
 print('Top 3 scored goals:')
-[print(f"- {team.name} -> {team.goals}") for team in sorted(top_3, key=lambda t: t.goals, reverse=True)]
+[print(f"- {team.name} -> {team.goals}") for team in sorted(top_3, key=lambda t: (t.goals), reverse=True)]
