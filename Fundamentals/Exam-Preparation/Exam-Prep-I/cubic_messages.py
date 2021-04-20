@@ -16,20 +16,24 @@ string = input()
 
 while string != 'Over!':
     num = int(input())
-    pattern = r'\d+[A-Za-z]+{num}[^A-Za-z]+'
+    pattern = r'^\d+[A-Za-z]{num}[^A-Za-z]*$'
     ptrn = pattern.format(num='{'+str(num)+'}')
     match = re.match(ptrn, string)
-    print(match)
+    
     if match:
-        p = r'[A-Za-z]+'
-        split_arg = re.match(p, match.string)
-        code_indexes = string.split(split_arg)
-        message = string[num:num*2]
+        for i in range(len(string)):
+            if not string[i].isdigit():
+                index = i
+                break
         
+        left_code_indexes = string[:index]
+        message = string[index:index+num]
+        right_code_indexes = string[index+num:]
+
         v_l = []
 
-        v_l = append_char(message, code_indexes[0], v_l)
-        v_l = append_char(message, code_indexes[1], v_l)
+        v_l = append_char(message, left_code_indexes, v_l)
+        v_l = append_char(message, right_code_indexes, v_l)
 
         vertification_code = ''.join(v_l)
 
