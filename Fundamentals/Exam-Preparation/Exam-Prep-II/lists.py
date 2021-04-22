@@ -1,4 +1,3 @@
-# def increase_even()
 data = input()
 
 while data != 'stop playing':
