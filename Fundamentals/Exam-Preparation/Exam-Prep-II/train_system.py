@@ -22,6 +22,9 @@ class Person:
         self.cards = []
         self.tickets = []
 
+    def get_total_sum(self):
+        return sum(list(map(lambda t: t.price, self.tickets)))
+
     def __str__(self):
         result = [f"{self.name}:"]
 
@@ -35,7 +38,7 @@ class Person:
         result.append(f"total: {sum(list(map(lambda t: t.price, self.tickets))):.2f}lv")
 
         return '\n'.join(result)
-
+    
 
 people = []
 existing_cards = []
@@ -89,7 +92,7 @@ while data != 'time to leave!':
 
     data = input()
 
-sorted_people = sorted(people, key=lambda p: sum(list(map(lambda t: t.price, p.tickets))), reverse=True)
-for person in sorted_people:
+sorted_people = sorted(people, key=lambda p: p.get_total_sum(), reverse=True)
+for person in sorted_people:    
     if len(person.tickets) > 0:
         print(person)
