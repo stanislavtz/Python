@@ -61,6 +61,7 @@ def set_appartments_for_sale(data, collection):
 
     return collection
 
+
 collection = []
 data = input()
 while data != 'collectApartments':
