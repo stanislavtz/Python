@@ -48,16 +48,14 @@ def set_appartments_for_sale(data, collection):
     count_of_available_apartments, price_for_one_apartment = list(map(int, data.split(' -> ')[1].split('|')))
 
     if not neighborhood_name in list(map(lambda n: n.name, collection)):
-        # data = input()
         return collection
 
     neighborhood = list(filter(lambda n: n.name == neighborhood_name, collection))[0]
     if not block_number in list(map(lambda bl: bl.number, neighborhood.blocks_list)):
-        # data = input()
         return collection
 
     for block in neighborhood.blocks_list:
-        if block_number == block.number:
+        if block.number == block_number:
             block.apartments_count = count_of_available_apartments
             block.price = price_for_one_apartment
 
