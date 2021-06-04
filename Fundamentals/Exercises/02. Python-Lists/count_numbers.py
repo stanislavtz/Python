@@ -7,6 +7,3 @@ for num in nums:
 
 for num in numbers:
     print(f"{num} -> {nums.count(num)}")
-    
-    
- print('test')   
